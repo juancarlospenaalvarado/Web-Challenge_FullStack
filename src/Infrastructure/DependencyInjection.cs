@@ -1,5 +1,6 @@
 ﻿using Application.Data;
-using Domain.Customers;
+using Domain.Entities.Permissions;
+using Domain.Entities.TypePermissions;
 using Domain.Primitives;
 using Infrastructure.Persistence;
 using Infrastructure.Persistence.Repositories;
@@ -27,7 +28,8 @@ public static class DependencyInjection
         services.AddScoped<IUnitOfWork>(sp =>
                 sp.GetRequiredService<ApplicationDbContext>());
 
-        services.AddScoped<ICustomerRepository, CustomerRepository>();
+        services.AddScoped<IPermissionRepository, PermissionsRepository>();
+        services.AddScoped<ITypePemissionRepository, TypePemissionRepository>();
 
         return services;
     }

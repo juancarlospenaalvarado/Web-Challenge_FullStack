@@ -1,7 +1,11 @@
-﻿namespace Application.Permissions.Common;
+﻿using Domain.Entities.TypePermissions;
+
+namespace Application.Permissions.Common;
 
 public record PermissionsReponse(
 int Id,
 string NombreEmpleado,
 string ApellidoEmpleado,
-DateTime FechaPermiso);
+TypePemission? TipoPermiso,
+int TipoPermisoId,
+DateOnly FechaPermiso);

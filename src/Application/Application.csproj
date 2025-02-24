@@ -18,11 +18,4 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Permissions\Query\GetAll\" />
-    <Folder Include="Permissions\Query\GetById\" />
-    <Folder Include="Permissions\Query\" />
-    <Folder Include="Permissions\Command\Update\" />
-  </ItemGroup>
-
 </Project>

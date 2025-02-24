@@ -1,6 +1,7 @@
-﻿namespace Application.Permissions.Command.Create;
+﻿namespace Application.Permissions.Command.Update;
 
-public record CreatePermissionCommand(
+public record UpdatePermissionsCommand(
+    int Id,
     string NombreEmpleado,
     string ApellidoEmpleado,
     int TipoPermiso,

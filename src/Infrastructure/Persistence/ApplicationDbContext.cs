@@ -1,5 +1,6 @@
 ﻿using Application.Data;
-using Domain.Customers;
+using Domain.Entities.Permissions;
+using Domain.Entities.TypePermissions;
 using Domain.Primitives;
 
 namespace Infrastructure.Persistence;
@@ -13,8 +14,9 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext, IUnitOfWor
         _publisher = publisher ?? throw new ArgumentNullException(nameof(publisher));
     }
 
-    public DbSet<Customer> Customers { get; set; }
-
+    public DbSet<Permission> Permission { get; set; }
+    public DbSet<TypePemission> TypePemission { get; set; }
+        
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
