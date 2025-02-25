@@ -37,6 +37,11 @@ class PermissionsRepository : IPermissionRepository
     {
         var response =  _elasticClient.Update<Permission>(permission.Id, u => u.Doc(permission));
     }
+    public async Task<Permission> Get(int id)
+    {
+        var a = (await _elasticClient.GetAsync<Permission>(id)).Source;
+        return a;
+    }
     public void Update(Permission permission) => _context.Permission.Update(permission);
     public async Task<bool> ExistsAsync(int id) => await _context.Permission.AnyAsync(permission => permission.Id == id);
     public async Task<Permission> GetByIdAsync(int id) => await _context.Permission.Include(x => x.TipoPermiso).SingleOrDefaultAsync(c => c.Id == id);
