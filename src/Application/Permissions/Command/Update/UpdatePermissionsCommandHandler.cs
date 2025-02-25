@@ -4,7 +4,7 @@ using System.Security;
 
 namespace Application.Permissions.Command.Update;
 
-class UpdatePermissionsCommandHandler : IRequestHandler<UpdatePermissionsCommand, ErrorOr<int>>
+public class UpdatePermissionsCommandHandler : IRequestHandler<UpdatePermissionsCommand, ErrorOr<int>>
 {
     private readonly IPermissionRepository _permisoRepository;
     private readonly IUnitOfWork _unitOfWork;
@@ -31,7 +31,7 @@ class UpdatePermissionsCommandHandler : IRequestHandler<UpdatePermissionsCommand
             command.FechaPermiso);
 
         _permisoRepository.Update(permission);
-        _permisoRepository.UpdateElastic(permission);   
+        //_permisoRepository.UpdateElastic(permission);   
 
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 

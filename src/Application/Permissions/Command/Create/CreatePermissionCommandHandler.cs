@@ -3,7 +3,7 @@ using Domain.Primitives;
 
 namespace Application.Permissions.Command.Create;
 
-class CreatePermissionCommandHandler : IRequestHandler<CreatePermissionCommand, ErrorOr<int>>
+public class CreatePermissionCommandHandler : IRequestHandler<CreatePermissionCommand, ErrorOr<int>>
 {
     private readonly IPermissionRepository _permisoRepository;
     private readonly IUnitOfWork _unitOfWork;
