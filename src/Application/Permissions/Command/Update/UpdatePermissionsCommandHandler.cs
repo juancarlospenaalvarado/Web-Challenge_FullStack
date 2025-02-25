@@ -31,8 +31,11 @@ class UpdatePermissionsCommandHandler : IRequestHandler<UpdatePermissionsCommand
             command.FechaPermiso);
 
         _permisoRepository.Update(permission);
+        _permisoRepository.UpdateElastic(permission);   
 
         await _unitOfWork.SaveChangesAsync(cancellationToken);
+
+
 
         return permission.Id;
     }

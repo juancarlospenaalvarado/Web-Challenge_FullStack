@@ -26,6 +26,8 @@ class CreatePermissionCommandHandler : IRequestHandler<CreatePermissionCommand, 
 
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
+        await _permisoRepository.AddElastich(permiso);
+
         return permiso.Id;
     }
 }
