@@ -5,5 +5,28 @@ services:
       context: .
       dockerfile: Web.API/Dockerfile
     ports:
-      - "5000:5000"
-      - "5001:5001"
+      - "8080:8080"
+      - "8081:8081"
+    depends_on:
+      - sqlserver
+    networks:
+      - webapi
+    restart: on-failure
+  
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      SA_PASSWORD: "Pass12345"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes: 
+      - sqlvolume:/var/opt/mssql
+    networks:
+      - webapi
+
+networks:
+    webapi:
+
+volumes:
+  sqlvolume:
