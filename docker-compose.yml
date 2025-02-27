@@ -1,0 +1,9 @@
+services:
+  web.api:
+    image: ${DOCKER_REGISTRY-}webapi
+    build:
+      context: .
+      dockerfile: Web.API/Dockerfile
+    ports:
+      - "5000:8080"
+      - "5001:8081"

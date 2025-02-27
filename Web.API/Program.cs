@@ -11,6 +11,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddPresentation()
                 .AddInfrastructure(builder.Configuration)
                 .AddApplication();
+// Habilitar CORS para todos los orígenes
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("PermitirTodo",
+        policy => policy.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+});
 
 var app = builder.Build();
 
@@ -21,6 +29,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.ApplyMigrations();
 }
+
 
 app.UseExceptionHandler("/error");
 
