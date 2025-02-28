@@ -30,8 +30,8 @@ public static class DependencyInjection
 
         services.AddSingleton<IElasticClient>(sp =>
         {
-            var settings = new ConnectionSettings(new Uri(credentials["Uri"]))
-                .BasicAuthentication(credentials["user"], credentials["pass"])
+            var settings = new ConnectionSettings(new Uri("http://elasticsearch:9200"))
+                .DisableDirectStreaming()
                 .ServerCertificateValidationCallback(CertificateValidations.AllowAll)
                 .DefaultIndex("permission");
             return new ElasticClient(settings);
